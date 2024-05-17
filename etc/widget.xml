@@ -1,0 +1,29 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="BelVG\ImageGrid\Block\Widget\Grid" id="belvg_image_grid">
+        <label>Image Grid Widget</label>
+        <description>This widget displays images from https://hub.dummyapis.com/image api</description>
+        <parameters>
+            <parameter name="image_quantity" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Number of images</label>
+                <value>6</value>
+            </parameter>
+            <parameter name="image_width" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Image Width</label>
+                <value>400</value>
+            </parameter>
+            <parameter name="image_height" xsi:type="text" required="true" visible="true" sort_order="20">
+                <label>Image Height</label>
+                <value>400</value>
+            </parameter>
+            <parameter name="image_text" xsi:type="text" required="true" visible="true" sort_order="30">
+                <label>Image Text</label>
+                <value>BelVG</value>
+            </parameter>
+            <parameter name="lazyload" xsi:type="select" visible="true" sort_order="40"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Emable lazyload for images</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var \BelVG\ImageGrid\Block\Widget\Grid $block
+ * @var \Magento\Framework\View\TemplateEngineInterface $this
+ * @var \Magento\Csp\Api\InlineUtilInterface $csp 
+ * @var \Magento\Framework\Escaper $escaper 
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer 
+ */
+
+$imageText = $escaper->escapeHtml($block->getImageText());
+$imageWidth = $escaper->escapeHtml($block->getImageWidth());
+$imageHeight = $escaper->escapeHtml($block->getImageHeight()); 
+$isLazyLoadEnabled = $escaper->escapeHtml($block->getLazyload());
+$apiURL = "https://hub.dummyapis.com/image?text=" . $imageText ."&height=" . $imageHeight . "&width=" . $imageWidth;
+?>
+<div class="grid grid__wrapper">
+    <?php for($i = 1; $i <= $block->getImageQuantity(); $i++): ?>
+        <div class="grid__item">
+            <img src=<?= $escaper->escapeUrl($apiURL) ?>
+                alt=<?= $imageText ?>
+                title=<?= $imageText ?>
+                class="grid__image"
+                width=<?= $imageWidth ?>
+                height=<?= $imageHeight ?>
+                <?php if($isLazyLoadEnabled): ?>loading="lazy"<?php endif; ?>>
+        </div>
+    <?php endfor; ?>    
+</div>

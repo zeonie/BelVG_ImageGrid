@@ -1,0 +1,33 @@
+@grid-gap: @indent__s + @indent__xs;
+
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .grid {
+        .lib-vendor-prefix-display();
+        .lib-vendor-prefix-flex-wrap();
+        gap: @grid-gap;
+
+        &__item {
+            .lib-vendor-prefix-flex-grow(1);
+            .lib-vendor-prefix-flex-shrink(1);
+            .lib-vendor-prefix-flex-basis(~'calc(50% - @{grid-gap})');
+        }
+
+        &__image {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .grid__item {
+        .lib-vendor-prefix-flex-basis(~'calc(100% / 3 - @{grid-gap})');
+    }
+}
